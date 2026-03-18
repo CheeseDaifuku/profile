@@ -1,1 +1,119 @@
-たかやま
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>たかやまの自己紹介</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+      background: linear-gradient(#ffe4ec, #ffffff);
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ffb7c5;
+      padding: 30px;
+      color: white;
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+
+    .container {
+      padding: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #ff7aa2;
+    }
+
+    .sakura {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: pink;
+      border-radius: 50% 50% 50% 0;
+      opacity: 0.7;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  🌸 たかやまの自己紹介 🌸
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>名前</h2>
+    <p>たかやま</p>
+  </div>
+
+  <div class="card">
+    <h2>部活動</h2>
+    <p>吹奏楽部でクラリネットをしています 🎵</p>
+  </div>
+
+  <div class="card">
+    <h2>好きなもの</h2>
+    <p>Mrs. GREEN APPLE が好きです 🍏</p>
+  </div>
+
+</div>
+
+<div class="sakura" id="sakura"></div>
+
+<script>
+  const sakura = document.getElementById("sakura");
+
+  function createPetal() {
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+    sakura.appendChild(petal);
+
+    setTimeout(() => {
+      petal.remove();
+    }, 5000);
+  }
+
+  setInterval(createPetal, 200);
+</script>
+
+</body>
+</html>
